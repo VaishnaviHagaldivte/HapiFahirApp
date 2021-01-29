@@ -1,0 +1,83 @@
+<app-patientstable></app-patientstable>
+<div class="container">
+    <h1>HL7 FHIR test</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <div>
+                <label for="allergies">1. Do you have allergies?</label>
+                <div>
+                    <input id="yes" type="radio" value="true" name="allergies" formControlName="allergies">
+                    <label for="yes">Yes</label>
+                </div>
+
+                <div>
+                    <input id="no" type="radio" value="false" name="allergies" formControlName="allergies">
+                    <label for="no">No</label>
+                </div>
+
+                <div *ngIf="!f.controls.allergies.valid">
+                    <div class="alert alert-danger" *ngIf="f.controls.allergies.errors.required">This is required.</div>
+                </div>
+            </div>
+            <div>
+                <label for="gender">2. What is your gender</label>
+                <select formControlName="gender" class="form-control">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <div *ngIf="!f.controls.gender.valid" >
+                    <div class="alert alert-danger" *ngIf="f.controls.gender.errors.required">This is required.</div>
+                </div>
+            </div>
+            <div>
+                <label for="status">3. What is your Marital Status</label>
+                <select formControlName="status" class="form-control">
+                    <option disabled> Select a Marital status</option>
+                    <option>Married</option>
+                    <option>Single</option>
+                </select>
+                <div *ngIf="!f.controls.status.valid">
+                    <div class="alert alert-danger" *ngIf="f.controls.status.errors.required">This is required.</div>
+                </div>
+            </div>
+    
+            <div>
+                <label for="smoke">4. Do you Smoke?</label>
+                <div>
+                    <input id="yes" type="radio" value="true" name="smoke" formControlName="smoke">
+                    <label for="yes">Yes</label>
+                </div>
+
+                <div>
+                    <input id="no" type="radio" value="false" name="smoke" formControlName="smoke">
+                    <label for="no">No</label>
+                </div>
+                <div  *ngIf="!f.controls.smoke.valid">
+                    <div class="alert alert-danger" *ngIf="f.controls.smoke.errors.required">This is required.</div>
+                </div>
+            </div>
+            <div>
+                <label for="drink">5. Do you drink alcohol?</label>
+                <div>
+                    <input id="yes" type="radio" value="true" name="drink" formControlName="drink">
+                    <label for="yes">Yes</label>
+                </div>
+
+                <div>
+                    <input id="no" type="radio" value="false" name="drink" formControlName="drink">
+                    <label for="no">No</label>
+                </div>
+                <div *ngIf="!f.controls.drink.valid">
+                    <div class="alert alert-danger" *ngIf="f.controls.drink.errors.required">This is required.</div>
+
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit"[disabled]="!form.valid" >Submit</button>
+        <div>
+            <br>
+            {{response|json }}
+        </div>
+    </form>
+</div>

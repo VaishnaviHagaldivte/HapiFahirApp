@@ -1,0 +1,17 @@
+
+<table id="patients">
+    <tr>
+        <th *ngFor="let col of columns">
+            {{col}}
+        </th>
+    </tr>
+    <tr *ngFor="let patient of patients">
+       <td>{{patient.id}}</td>
+       <td>{{patient.name}}</td>
+       <td>{{patient.gender}}</td>
+       <td>{{patient.dob}}</td>
+    </tr>
+</table>
+<div>
+    {{reqTime}}
+</div>
